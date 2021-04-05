@@ -65,4 +65,17 @@ class Atendimento {
 
         })
     }
+
+    altera(id, valores, res) {
+        const sql = 'UPDATE Atendimentos SET ? WHERE id=?'
+
+        conexao.query(sql, [valores, id], (erro, resultados) => {
+            if (erro) {
+                res.status(400).json(erro)
+            } else {
+                res.status(200).json(resultados)
+            }
+        })
+
+    }
 }
